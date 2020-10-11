@@ -442,6 +442,8 @@ int flb_engine_start(struct flb_config *config)
         return -1;
     }
 
+    flb_pipe_set_nonblocking(&config->ch_manager[1]);
+    
     /* Start the Storage engine */
     ret = flb_storage_create(config);
     if (ret == -1) {
